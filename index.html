@@ -1,0 +1,76 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lombard ZP</title>
+</head>
+<body>
+  <form>
+    <h2>Розрахунок базової ЗП:</h2>
+    <label for="baseStavka">Базова ставка робочих годин ЛВ:<input type="number" id='baseStavka'></label><br>
+    <label for="baseZP">Базова ставка ЗП:<input type="number" id='baseZP'></label><br>
+    <label for="timeFact">Кількість робочих годин КЕ<input type="number" id='timeFact'></label><br>
+    
+<button type = "button" id='button'>Calc</button>
+    <p >Базова ЗП: <span id='resultBase'></span></p>
+    <h2>Розрахунок змінної ЗП:</h2>
+    <label for="incomePlan">Доход ЛВ  план:<input type="number" id='incomePlan'></label>
+    <label for="incomeFact">Доход ЛВ  факт:<input type="number" id='incomeFact'></label>
+    <button type="button" id = "kvpButton">calc КВП</button>
+    <p>КВП = <span id = "kvp"></span></p>
+    <h3>Розрахунок базової премії від доходу ЛВ по ТП:</h3>
+    <div id="tariffs">
+      <ul>
+        <li><label for="incomePrestigeGold">Доход по ТП Престиж (золото)<input type="number" id = "incomePrestigeGold" class = "tpInput" data-tarif = "0"> - <span class="tpSpan"></span></label></li>
+        <li><label for="incomeStandartGold">Доход по ТП Стандарт (золото)<input type="number" id = "incomeStandartGold" class = "tpInput" data-tarif = "1"> - <span class="tpSpan"></span></label>
+        <li><label for="incomeEconom">Доход по ТП Економ<input type="number" id = "incomeEconom" class = "tpInput" data-tarif = "2"> - <span class="tpSpan"  ></span></label></li>
+        <li><label for="incomeGoodStart">Доход по ТП Гарний початок<input type="number" id = "incomeGoodStart" class = "tpInput"  data-tarif = "3"> - <span class="tpSpan"></span></label></li>
+        <li><label for="incomeNewPartner">Доход по ТП Новий партнер<input type="number" id = "incomeNewPartner" class = "tpInput"  data-tarif = "4"> - <span class="tpSpan"></span></label></li>
+        <li><label for="incomeZeroStart">Доход по ТП Стартуй з нуля<input type="number" id = "incomeZeroStart" class = "tpInput"  data-tarif = "5"> - <span class="tpSpan"></span></label></li>
+        <li><label for="incomeTenZero">Доход по ТП 10:0 <input type="number" id = "incomeTenZero" class = "tpInput"  data-tarif = "6"> - <span class="tpSpan"></span></label></li>
+        <li><label for="incomeStandartSilver">Доход по ТП Стандарт (срібло)<input type="number" id = "incomeStandartSilver" class = "tpInput"  data-tarif = "7"> - <span class="tpSpan"></span></label></li>
+        <li><label for="incomePrestigeTech">Доход по ТП Престиж (техніка)<input type="number" id = "incomePrestigeTech" class = "tpInput"  data-tarif = "8"> - <span class="tpSpan"></span></label></li>
+        <li><label for="incomeStandartTech">Доход по ТП Стандарт (техніка)<input type="number" id = "incomeStandartTech" class = "tpInput"  data-tarif = "9"> - <span class="tpSpan"></span></label></li>
+        <li><label for="incomePersonal">Доход по ТП Персональний<input type="number" id = "incomePersonal" class = "tpInput"  data-tarif = "10"> - <span class="tpSpan"></span></label></li>
+      </ul>
+    </div>
+    <button type="button" id = "calcBonusTarif">Calc Bonus</button>
+    <button type="button" id="index" >index</button>
+    
+    <!-- <button type="button" id="index" onclick="console.log(bonusArr)">index</button> -->
+    <p id="indexText"></p>
+      <ul id="inputsText"></ul>
+    <h3>Розрахунок бонусу за скупку:</h3>
+    <div id="bonusMetal">
+      <h4>Скупка золота:</h4>
+    <ul class="bonusGold">
+      <li><label for="gold1">1-ша категорія, всього грам:<input type="number" id = "gold1" value="0" data-typeM = "1"></label><p class = "bonusCalc"> &nbsp;Ваш бонус:&nbsp;<span class="bonusCalcText"></span></p></li>
+      <li><label for="gold2">2-га категорія, всього грам:<input type="number" id = "gold2" value="0" data-typeM = "2"></label><p class = "bonusCalc"> &nbsp;Ваш бонус:&nbsp;<span class="bonusCalcText"></span></p></li>
+      <li><label for="gold3">3-тя категорія, всього грам:<input type="number" id = "gold3" value="0" data-typeM = "3"></label><p class = "bonusCalc"> &nbsp;Ваш бонус:&nbsp;<span class="bonusCalcText"></span></p></li>
+    </ul>
+    <h4>Скупка срібла:</h4>
+    <ul class="bonusSilver">
+      <li><label for="silver1">1-ша категорія, всього грам:<input type="number" value="0" data-typeM = "4"></label><p class = "bonusCalc"> &nbsp;Ваш бонус:&nbsp;<span></span></p></li>
+      <li><label for="silver2">2-га категорія, всього грам:<input type="number" value="0" data-typeM = "5"></label><p class = "bonusCalc"> &nbsp;Ваш бонус:&nbsp;<span></span></p></li>
+    </ul>
+    </div>
+    
+    <h4>Скупка техніки:</h4>
+    <h5>Додати рядок &nbsp;<button type = "button" id="addRow">+</button></h5>
+    <ol id = "techList">
+      <li><label for="tech1">Ціна нової техніки в прайсі, грн:<input type="number"  value="0"></label><p class = "bonusCalc"> &nbsp;Ваш бонус:&nbsp;<span class="bonusTech"></span></p>&nbsp;<button type="button" class="removeRow">-</button></li>
+    </ol>
+    
+    <h3 >Всього бонусів за скупку:&nbsp;<span id="totalBonusText"></span></h3>
+    <h4>З них:</h4>
+    <p>Метал - <span id="spanTotalMetal"></span></p>
+    <p>Техніка - <span id="spanTotalTech"></span></p>
+    <button type="button" id="totalBonus">calc</button>
+  </form>
+  
+ 
+
+</body>
+</html>
